@@ -1,0 +1,501 @@
+@font-face {
+  font-family: 'Spezia';
+  src: url('./SpeziaWeb-Regular.woff2') format('woff2'),
+    url('./SpeziaWeb-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Spezia';
+  src: url('./SpeziaWeb-RegularItalic.woff2') format('woff2'),
+    url('./SpeziaWeb-RegularItalic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Spezia';
+  src: url('./SpeziaWeb-Medium.woff2') format('woff2'),
+    url('./SpeziaWeb-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Spezia';
+  src: url('./SpeziaWeb-MediumItalic.woff2') format('woff2'),
+    url('./SpeziaWeb-MediumItalic.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Spezia';
+  src: url('./SpeziaWeb-SemiBold.woff2') format('woff2'),
+    url('./SpeziaWeb-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Spezia';
+  src: url('./SpeziaWeb-SemiBoldItalic.woff2') format('woff2'),
+    url('./SpeziaWeb-SemiBoldItalic.woff') format('woff');
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Spezia';
+  src: url('./SpeziaWeb-Bold.woff2') format('woff2'),
+    url('./SpeziaWeb-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Spezia';
+  src: url('./SpeziaWeb-BoldItalic.woff2') format('woff2'),
+    url('./SpeziaWeb-BoldItalic.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+}
+
+
+/*--------------------------------
+
+WellCube icon font
+Generated using nucleoapp.com
+
+-------------------------------- */
+
+@font-face {
+  font-family: 'WellCube';
+  src: url('./WellCube.eot');
+  src: url('./WellCube.eot') format('embedded-opentype'),
+    url('./WellCube.woff2') format('woff2'),
+    url('./WellCube.woff') format('woff'),
+    url('./WellCube.ttf') format('truetype');
+    /* url('WellCube.svg') format('svg'); */
+}
+
+/* base class */
+.icon {
+  display: inline-block;
+  font: normal normal normal 1em/1 'WellCube';
+  color: inherit;
+  flex-shrink: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* size examples - relative units */
+.icon-sm {
+  font-size: 0.8em;
+}
+
+.icon-lg {
+  font-size: 1.2em;
+}
+
+/* size examples - absolute units */
+.icon-16 {
+  font-size: 16px;
+}
+
+.icon-24 {
+  font-size: 24px;
+}
+
+.icon-32 {
+  font-size: 32px;
+}
+
+/* rotate the icon infinitely */
+.icon-is-spinning {
+  animation: icon-spin 1s infinite linear;
+}
+
+@keyframes icon-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* transform */
+.icon-rotate-90 {
+  transform: rotate(90deg);
+}
+
+.icon-rotate-180 {
+  transform: rotate(180deg);
+}
+
+.icon-rotate-270 {
+  transform: rotate(270deg);
+}
+
+.icon-flip-y {
+  transform: scaleY(-1);
+}
+
+.icon-flip-x {
+  transform: scaleX(-1);
+}
+
+/* icons */
+.wcicon-arrow-circle-down::before {
+  content: '\ea01';
+}
+
+.wcicon-arrow-circle-left::before {
+  content: '\ea02';
+}
+
+.wcicon-arrow-circle-right::before {
+  content: '\ea03';
+}
+
+.wcicon-arrow-circle-up::before {
+  content: '\ea04';
+}
+
+.wcicon-arrow-down::before {
+  content: '\ea05';
+}
+
+.wcicon-arrow-left::before {
+  content: '\ea06';
+}
+
+.wcicon-arrow-right::before {
+  content: '\ea07';
+}
+
+.wcicon-arrow-up::before {
+  content: '\ea08';
+}
+
+.wcicon-building::before {
+  content: '\ea09';
+}
+
+.wcicon-check::before {
+  content: '\ea0a';
+}
+
+.wcicon-checkmark_checked::before {
+  content: '\ea0b';
+}
+
+.wcicon-checkmark_unchecked::before {
+  content: '\ea0c';
+}
+
+.wcicon-chevron-down::before {
+  content: '\ea0d';
+}
+
+.wcicon-chevron-down-double::before {
+  content: '\ea0e';
+}
+
+.wcicon-chevron-left::before {
+  content: '\ea0f';
+}
+
+.wcicon-chevron-left-double::before {
+  content: '\ea10';
+}
+
+.wcicon-chevron-right::before {
+  content: '\ea11';
+}
+
+.wcicon-chevron-right-double::before {
+  content: '\ea12';
+}
+
+.wcicon-chevron-selector-vertical::before {
+  content: '\ea13';
+}
+
+.wcicon-chevron-up::before {
+  content: '\ea14';
+}
+
+.wcicon-chevron-up-double::before {
+  content: '\ea15';
+}
+
+.wcicon-circle-exclamation::before {
+  content: '\ea16';
+}
+
+.wcicon-circle-question::before {
+  content: '\ea17';
+}
+
+.wcicon-circle-xmark::before {
+  content: '\ea18';
+}
+
+.wcicon-clients-default::before {
+  content: '\ea19';
+}
+
+.wcicon-clients-selected::before {
+  content: '\ea1a';
+}
+
+.wcicon-comms::before {
+  content: '\ea1b';
+}
+
+.wcicon-comms-text::before {
+  content: '\ea1c';
+}
+
+.wcicon-decorative-email::before {
+  content: '\ea1d';
+}
+
+.wcicon-decorative-success::before {
+  content: '\ea1e';
+}
+
+.wcicon-device-alert::before {
+  content: '\ea1f';
+}
+
+.wcicon-device-ok::before {
+  content: '\ea20';
+}
+
+.wcicon-dots-vertical::before {
+  content: '\ea21';
+}
+
+.wcicon-drawing-tools::before {
+  content: '\ea22';
+}
+
+.wcicon-exclamation::before {
+  content: '\ea23';
+}
+
+.wcicon-expand-alt::before {
+  content: '\ea24';
+}
+
+.wcicon-fan::before {
+  content: '\ea25';
+}
+
+.wcicon-favorite::before {
+  content: '\ea26';
+}
+
+.wcicon-filter::before {
+  content: '\ea27';
+}
+
+.wcicon-frame::before {
+  content: '\ea28';
+}
+
+.wcicon-frame-2::before {
+  content: '\ea29';
+}
+
+.wcicon-gear-alt::before {
+  content: '\ea2a';
+}
+
+.wcicon-google::before {
+  content: '\ea2b';
+}
+
+.wcicon-help-default::before {
+  content: '\ea2c';
+}
+
+.wcicon-help-selected::before {
+  content: '\ea2d';
+}
+
+.wcicon-hide::before {
+  content: '\ea2e';
+}
+
+.wcicon-home::before {
+  content: '\ea2f';
+}
+
+.wcicon-home-text::before {
+  content: '\ea30';
+}
+
+.wcicon-information::before {
+  content: '\ea31';
+}
+
+.wcicon-microsoft::before {
+  content: '\ea32';
+}
+
+.wcicon-minus::before {
+  content: '\ea33';
+}
+
+.wcicon-notifications-no::before {
+  content: '\ea34';
+}
+
+.wcicon-notifications-no-selected::before {
+  content: '\ea35';
+}
+
+.wcicon-notifications-off::before {
+  content: '\ea36';
+}
+
+.wcicon-notifications-on::before {
+  content: '\ea37';
+}
+
+.wcicon-notifications-yes::before {
+  content: '\ea38';
+}
+
+.wcicon-notifications-yes-selected::before {
+  content: '\ea39';
+}
+
+.wcicon-partner-default::before {
+  content: '\ea3a';
+}
+
+.wcicon-partner-selected::before {
+  content: '\ea3b';
+}
+
+.wcicon-pen::before {
+  content: '\ea3c';
+}
+
+.wcicon-plus::before {
+  content: '\ea3d';
+}
+
+.wcicon-reports::before {
+  content: '\ea3e';
+}
+
+.wcicon-reports-text::before {
+  content: '\ea3f';
+}
+
+.wcicon-salesteam-default::before {
+  content: '\ea40';
+}
+
+.wcicon-salesteam-selected::before {
+  content: '\ea41';
+}
+
+.wcicon-search-alt::before {
+  content: '\ea42';
+}
+
+.wcicon-show::before {
+  content: '\ea43';
+}
+
+.wcicon-sliders-up::before {
+  content: '\ea44';
+}
+
+.wcicon-status-1-complete::before {
+  content: '\ea45';
+}
+
+.wcicon-status-1-incomplete::before {
+  content: '\ea46';
+}
+
+.wcicon-status-1-missing::before {
+  content: '\ea47';
+}
+
+.wcicon-status-2-complete::before {
+  content: '\ea48';
+}
+
+.wcicon-status-2-incomplete::before {
+  content: '\ea49';
+}
+
+.wcicon-status-2-missing::before {
+  content: '\ea4a';
+}
+
+.wcicon-step-active::before {
+  content: '\ea4b';
+}
+
+.wcicon-step-completed::before {
+  content: '\ea4c';
+}
+
+.wcicon-step-inactive::before {
+  content: '\ea4d';
+}
+
+.wcicon-step-number-1-disabled::before {
+  content: '\ea4e';
+}
+
+.wcicon-step-number-1-enabled::before {
+  content: '\ea4f';
+}
+
+.wcicon-step-number-2-disabled::before {
+  content: '\ea50';
+}
+
+.wcicon-step-number-2-enabled::before {
+  content: '\ea51';
+}
+
+.wcicon-system::before {
+  content: '\ea52';
+}
+
+.wcicon-system-text::before {
+  content: '\ea53';
+}
+
+.wcicon-team::before {
+  content: '\ea54';
+}
+
+.wcicon-transfer::before {
+  content: '\ea55';
+}
+
+.wcicon-trash::before {
+  content: '\ea56';
+}
+
+.wcicon-triangle::before {
+  content: '\ea57';
+}
+
+.wcicon-xmark::before {
+  content: '\ea58';
+}
