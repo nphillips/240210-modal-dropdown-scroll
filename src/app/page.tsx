@@ -1,107 +1,135 @@
 'use client';
+import { useState, useRef, useEffect } from 'react';
 import Button from '@/components/Button';
-import Dropdown from '@/components/Dropdown';
-import Field from '@/components/Field';
-import Input from '@/components/Input';
-import Modal from '@/components/Modal';
-import Radio from '@/components/Radio';
-import RadioGroup from '@/components/RadioGroup';
-import React from 'react';
-import Select from 'react-select';
+import clsx from 'clsx';
 
-const options = [
-  { id: 'val0', value: 'val0', label: 'testsite5' },
-  { id: 'val0', value: 'val0', label: 'goofy testing site' },
-  { id: 'val0', value: 'val0', label: 'sitename-1791234098' },
-  { id: 'val0', value: 'val0', label: 'sitename1283343488' },
-  { id: 'val0', value: 'val0', label: 'Testing111' },
-  { id: 'val0', value: 'val0', label: 'TYLER TEST' },
-  { id: 'val0', value: 'val0', label: 'An Amazing Site' },
-  { id: 'val0', value: 'val0', label: 'test for kate' },
-  { id: 'val0', value: 'val0', label: 'Site With Sensor Mapping' },
-  { id: 'val0', value: 'val0', label: 'Testing1' },
-  { id: 'val0', value: 'val0', label: 'Yet Another Site' },
-  { id: 'val0', value: 'val0', label: 'Viras test site' },
-];
+export interface CustomDropdownProps {
+  scrollingContainerRef: React.RefObject<HTMLDivElement>;
+}
 
-const MyComponent = () => <Select options={options} />;
-
-export default function Home() {
+export interface CustomDropdownOptionProps {
+  label: string;
+}
+export const CustomDropdownOption = ({ label }: CustomDropdownOptionProps) => {
   return (
-    <div>
-      <Modal
-        innerStyle="" // I'd like to add conditional padding here
-        heading="Invite a user"
-        headingSize="h3"
-        description="Start by selecting the level of permission for this user"
-        open={true}
-        onClose={() => {}}
-        maxWidth="lg"
-        buttons={
-          <>
-            <Button size="medium" variant="secondary" label="Cancel" />
-            <Button size="medium" variant="primary" label="Delete" iconRight />
-          </>
+    <label className="flex min-h-[40px] items-center border-t border-t-grey-100 px-2">
+      <input type="checkbox" name="checkboxes" className="mr-2" />
+      <div>{label}</div>
+    </label>
+  );
+};
+
+export const CustomDropdown = ({
+  scrollingContainerRef,
+}: CustomDropdownProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+
+    // Wait for the dropdown to open and then scroll
+    if (!isOpen) {
+      setTimeout(() => {
+        const menuBottomElement = document.getElementById('menu-bottom');
+        if (menuBottomElement && scrollingContainerRef.current) {
+          menuBottomElement.scrollIntoView({ behavior: 'smooth' });
         }
+      }, 0);
+    }
+  };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Node;
+      if (dropdownRef.current && !dropdownRef.current.contains(target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [dropdownRef]);
+
+  return (
+    <div className="relative" ref={dropdownRef}>
+      <div>
+        <label className="block">Click to open custom dropdown:</label>
+        <button
+          onClick={toggleDropdown}
+          className="w-full rounded-md border px-2 py-3 text-left"
+        >
+          Selected option name <span className="float-right">▼</span>
+        </button>
+      </div>
+      <div
+        className={clsx(
+          'absolute left-0 right-0 bg-white transition-all',
+          !isOpen && 'max-h-0 overflow-hidden',
+          isOpen && 'max-h-[320px] overflow-y-visible',
+        )}
       >
-        <>
-          <RadioGroup
-            name="permission"
-            value=""
-            onChange={() => {}}
-            direction="horizontal"
-            className="border-b border-b-[#C1DBEA] pb-6 leading-[1.25] [&_label]:text-[.875rem]"
-          >
-            <Radio
-              id="orgOption"
-              value="org-admin"
-              label="Org admin"
-              className="[&>span]:font-medium"
-              aria-selected="true"
-            />
-            <Radio id="siteOption" value="site-admin" label="Site admin" />
-            <Radio
-              id="externalOption"
-              value="site-external"
-              label="External collaborator"
-            />
-          </RadioGroup>
+        <div className="max-h-[320px] overflow-y-auto rounded-b-[0.375rem] rounded-t-[0] border-b border-l border-r border-[#98A2B3] shadow-com-dropdown-menu2 ">
+          <CustomDropdownOption label="Option 1" />
+          <CustomDropdownOption label="Option 2" />
+          <CustomDropdownOption label="Option 3" />
+          <CustomDropdownOption label="Option 4" />
+          <CustomDropdownOption label="Option 5" />
+          <CustomDropdownOption label="Option 6" />
+          <CustomDropdownOption label="Option 7" />
+          <CustomDropdownOption label="Option 8" />
+          <CustomDropdownOption label="Option 9" />
+          <CustomDropdownOption label="Option 10" />
+          <CustomDropdownOption label="Option 11" />
+          <CustomDropdownOption label="Option 12" />
+          <CustomDropdownOption label="Option 13" />
+          <CustomDropdownOption label="Option 14" />
+          <CustomDropdownOption label="Option 15" />
+          <CustomDropdownOption label="Option 16" />
+          <CustomDropdownOption label="Option 17" />
+          <CustomDropdownOption label="Option 18" />
+          <CustomDropdownOption label="Option 19" />
+          <CustomDropdownOption label="Option 20" />
+        </div>
+        <div className=" bottom-0 h-[40px]" id="menu-bottom"></div>
+      </div>
+    </div>
+  );
+};
 
-          <div className="mt-8 flex min-w-0 ">
-            <div className="flex min-w-0 flex-[1_1_500px] flex-col gap-y-8 pb-5">
-              <Field htmlFor="inviteEmail" label="Email">
-                <form noValidate>
-                  <Input
-                    id="inviteEmail"
-                    value=""
-                    inputSize="large"
-                    name="inviteEmail"
-                    placeholder="Enter new user email"
-                    required
-                    type="text"
-                    classes="w-full"
-                  />
-                </form>
-              </Field>
+export default function Page2() {
+  const scrollingContainerRef = useRef(null); // Add this line
 
-              <Field htmlFor="sites" label="Sites">
-                <form noValidate>
-                  <Dropdown
-                    options={options}
-                    placeholder="Select one from the list"
-                    inputId="example0294"
-                    handleSelection={() => {}}
-                    size="large"
-                    isMulti
-                    menuLayoutEffect={true}
-                  />
-                </form>
-              </Field>
-            </div>
-            <div className="flex w-full min-w-0 flex-[1_1_375px] flex-col"></div>
+  return (
+    <div className="fixed inset-0 flex flex-col items-center justify-center bg-black/20">
+      <div
+        ref={scrollingContainerRef}
+        className="scrolling-container w-[800px] overflow-y-scroll scroll-smooth rounded-lg bg-white"
+      >
+        <div className="p-6">
+          <div className="mb-4">
+            <h2 className="text-[24px] font-semibold">Header</h2>
+            <div>descriptive text</div>
           </div>
-        </>
-      </Modal>
+          <div className="flex ">
+            <div className="flex flex-[1_1_400px] flex-col gap-y-4">
+              <div className="h-[80px] bg-grey-50">object 1</div>
+              <div className="h-[80px] bg-grey-50">object 2</div>
+              <div className="relative min-h-[80px]  bg-grey-50">
+                <CustomDropdown scrollingContainerRef={scrollingContainerRef} />
+              </div>
+            </div>
+
+            <div className="ml-4 flex-[1_1_300px] border-l border-l-grey-100 pl-4">
+              Selected sites:
+            </div>
+          </div>
+          <div className="mt-8 flex justify-center gap-x-4">
+            <Button variant="secondary" label="Cancel" className="w-[140px]" />
+            <Button variant="primary" label="Okay" className="w-[140px]" />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
