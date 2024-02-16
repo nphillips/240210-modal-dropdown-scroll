@@ -4,6 +4,12 @@
 
 @import '../assets/fonts/fonts.css';
 
+:root {
+  --modal-max-width-sm: 512px;
+  --modal-max-width-md: 646px;
+  --modal-max-width-lg: 967px;
+}
+
 html {
   scroll-behavior: smooth;
 }

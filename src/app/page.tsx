@@ -10,9 +10,9 @@ export default function Page2() {
     <div className="fixed inset-0 flex flex-col items-center justify-center bg-black/20">
       <div
         ref={scrollingContainerRef}
-        className="scrolling-container w-[800px] overflow-y-scroll scroll-smooth rounded-lg bg-white"
+        className="scrolling-container w-[var(--modal-max-width-lg)] overflow-y-scroll scroll-smooth rounded-2xl bg-white shadow-com-modal"
       >
-        <div className="p-6">
+        <div className="px-[48px] pb-[64px] pt-[50px]">
           <div className="mb-4">
             <h2 className="text-[24px] font-semibold">Header</h2>
             <div>descriptive text</div>
