@@ -1,36 +1,29 @@
-// Import statements (React, Button, clsx, etc.)
-
+// CustomDropdown.tsx
 import clsx from 'clsx';
 import { useEffect, useRef, useState } from 'react';
 
 export interface CustomDropdownProps {
   scrollingContainerRef: React.RefObject<HTMLDivElement>;
+  children?: React.ReactNode;
+  onToggle?: (isOpen: boolean) => void;
 }
-
-export interface CustomDropdownOptionProps {
-  label: string;
-}
-
-export const CustomDropdownOption = ({ label }: CustomDropdownOptionProps) => {
-  return (
-    <label className="flex min-h-[40px] items-center border-t border-t-grey-100 px-2">
-      <input type="checkbox" name="checkboxes" className="mr-2" />
-      <div>{label}</div>
-    </label>
-  );
-};
 
 export const CustomDropdown = ({
   scrollingContainerRef,
+  children,
+  onToggle,
 }: CustomDropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const toggleDropdown = () => {
-    setIsOpen(!isOpen);
+    const newOpenState = !isOpen;
+    setIsOpen(newOpenState);
+    if (onToggle) {
+      onToggle(newOpenState);
+    }
 
-    // Wait for the dropdown to open and then scroll
-    if (!isOpen) {
+    if (newOpenState) {
       setTimeout(() => {
         const menuBottomElement = document.getElementById('menu-bottom');
         if (menuBottomElement && scrollingContainerRef.current) {
@@ -40,17 +33,19 @@ export const CustomDropdown = ({
     }
   };
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      const target = event.target as Node;
-      if (dropdownRef.current && !dropdownRef.current.contains(target)) {
+      if (!dropdownRef.current?.contains(event.target as Node)) {
         setIsOpen(false);
+        if (onToggle) {
+          onToggle(false);
+        }
       }
     };
+
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [dropdownRef]);
+  }, [dropdownRef, onToggle]);
 
   return (
     <div className="relative" ref={dropdownRef}>
@@ -71,28 +66,9 @@ export const CustomDropdown = ({
         )}
       >
         <div className="max-h-[320px] overflow-y-auto rounded-b-[0.375rem] rounded-t-[0] border-b border-l border-r border-[#98A2B3] shadow-com-dropdown-menu2 ">
-          <CustomDropdownOption label="Option 1" />
-          <CustomDropdownOption label="Option 2" />
-          <CustomDropdownOption label="Option 3" />
-          <CustomDropdownOption label="Option 4" />
-          <CustomDropdownOption label="Option 5" />
-          <CustomDropdownOption label="Option 6" />
-          <CustomDropdownOption label="Option 7" />
-          <CustomDropdownOption label="Option 8" />
-          <CustomDropdownOption label="Option 9" />
-          <CustomDropdownOption label="Option 10" />
-          <CustomDropdownOption label="Option 11" />
-          <CustomDropdownOption label="Option 12" />
-          <CustomDropdownOption label="Option 13" />
-          <CustomDropdownOption label="Option 14" />
-          <CustomDropdownOption label="Option 15" />
-          <CustomDropdownOption label="Option 16" />
-          <CustomDropdownOption label="Option 17" />
-          <CustomDropdownOption label="Option 18" />
-          <CustomDropdownOption label="Option 19" />
-          <CustomDropdownOption label="Option 20" />
+          {children}
         </div>
-        <div className=" bottom-0 h-[40px]" id="menu-bottom"></div>
+        <div className="bottom-0 h-[40px]" id="menu-bottom"></div>
       </div>
     </div>
   );
