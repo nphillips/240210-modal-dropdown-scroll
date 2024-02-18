@@ -9,7 +9,7 @@ import clsx from 'clsx';
 
 export default function Page2() {
   const scrollingContainerRef = useRef(null);
-  const selectedTagsRef = useRef(null); // Step 1: Ref for the container of selected tags
+  const selectedTagsRef = useRef<HTMLDivElement>(null);
 
   const [dropdownOptions, setDropdownOptions] = useState([
     { label: 'Option 1', checked: false },
@@ -51,12 +51,11 @@ export default function Page2() {
   };
 
   useEffect(() => {
-    if (selectedTagsRef.current) {
-      const selectedTagsElement = selectedTagsRef.current;
-      const lastSelectedTag = selectedTagsElement.lastChild;
-      if (lastSelectedTag) {
-        lastSelectedTag.scrollIntoView({ behavior: 'smooth' });
-      }
+    const selectedTagsElement = selectedTagsRef.current;
+    const lastSelectedTag =
+      selectedTagsElement?.lastChild as HTMLElement | null;
+    if (lastSelectedTag) {
+      lastSelectedTag.scrollIntoView({ behavior: 'smooth' });
     }
   }, [dropdownOptions]);
 
